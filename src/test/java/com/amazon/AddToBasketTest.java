@@ -12,7 +12,7 @@ public class AddToBasketTest extends BaseTest {
     @Test
     public void basicAmazonProductSearch() {
         homePage.open()
-                .dontChangeCountry()
+                .dontChangeCountryIfRequired()
                 .searchProduct(ITEM);
         searchResultsPage.choseItem();
         productDetailsPage.choseHardCover().selectQuantity("2").addToCart();

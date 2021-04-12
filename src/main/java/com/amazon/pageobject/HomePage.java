@@ -1,11 +1,9 @@
 package com.amazon.pageobject;
 
 import com.amazon.utils.PropertyManager;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 public class HomePage extends BasePage {
 
@@ -18,17 +16,17 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//input[@id='nav-search-submit-button']")
     public static WebElement searchButton;
 
-    @FindBy (xpath = "//a[@id='icp-nav-flyout']")
+    @FindBy(xpath = "//a[@id='icp-nav-flyout']")
     public static WebElement changeLanguageButton;
 
-    @FindBy (xpath = "//a[@id='nav-link-accountList']")
+    @FindBy(xpath = "//a[@id='nav-link-accountList']")
     public static WebElement signInLink;
 
-    @FindBy (xpath = "//span[contains(text(),\"Don't Change\")]")
+    @FindBy(xpath = "//span[contains(text(),\"Don't Change\")]")
     public static WebElement dontChangeButton;
 
 
-    public HomePage(WebDriver driver, PropertyManager propertyManager){
+    public HomePage(WebDriver driver, PropertyManager propertyManager) {
         super(driver, propertyManager);
     }
 
@@ -44,18 +42,22 @@ public class HomePage extends BasePage {
         return this;
     }
 
-    public HomePage changeCurrency(){
+    public HomePage changeCurrency() {
         clickOnElement(changeLanguageButton);
         return this;
     }
 
-    public HomePage signIn(){
+    public HomePage signIn() {
         clickOnElement(signInLink);
         return this;
     }
 
-    public HomePage dontChangeCountry(){
-        clickOnElement(dontChangeButton);
+    public HomePage dontChangeCountryIfRequired() {
+        try {
+            clickOnElement(dontChangeButton);
+        } catch (Exception e) {
+            System.out.println("#### No country change needed");
+        }
         return this;
     }
 }

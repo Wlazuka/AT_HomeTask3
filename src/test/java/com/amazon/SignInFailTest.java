@@ -12,7 +12,7 @@ public class SignInFailTest extends BaseTest {
     @Test
     public void signInFailTest() {
         homePage.open()
-                .dontChangeCountry()
+                .dontChangeCountryIfRequired()
                 .signIn();
         signInPage
                 .enterEmail(EMAIL)

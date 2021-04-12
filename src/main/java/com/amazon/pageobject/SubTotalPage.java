@@ -5,16 +5,16 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class SubTotalPage extends BasePage{
+public class SubTotalPage extends BasePage {
+
+    @FindBy(xpath = "//a[@id='hlb-view-cart-announce']")
+    public static WebElement cartButton;
 
     public SubTotalPage(WebDriver driver, PropertyManager propertyManager) {
         super(driver, propertyManager);
     }
 
-    @FindBy(xpath = "//a[@id='hlb-view-cart-announce']")
-    public static WebElement cartButton;
-
-    public SubTotalPage goToCart(){
+    public SubTotalPage goToCart() {
         clickOnElement(cartButton);
         return this;
     }

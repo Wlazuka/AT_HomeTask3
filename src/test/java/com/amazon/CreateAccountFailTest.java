@@ -15,7 +15,7 @@ public class CreateAccountFailTest extends BaseTest{
     @Test
     public void creatingAccountFailTest() {
         homePage.open()
-                .dontChangeCountry()
+                .dontChangeCountryIfRequired()
                 .signIn();
         signInPage.createAccount();
         createAccountPage

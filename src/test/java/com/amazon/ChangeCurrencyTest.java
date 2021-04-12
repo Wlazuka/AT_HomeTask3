@@ -7,16 +7,14 @@ import org.testng.annotations.Test;
 public class ChangeCurrencyTest extends BaseTest {
 
     private static final String CURRENCY = PropertyManager.getProperty("currencyPage.currency");
-    private static final String MESSAGE = PropertyManager.getProperty("currencyPage.messageShort");
+    private static final String MESSAGE = PropertyManager.getProperty("currencyPage.message");
 
     @Test
     public void changeCurrency(){
         homePage.open()
-                .dontChangeCountry()
+                .dontChangeCountryIfRequired()
                 .changeCurrency();
         currencySettingPage.selectCurrency(CURRENCY);
-
-        System.out.println(MESSAGE);
         Assert.assertTrue(currencySettingPage.pageSource().contains(MESSAGE));
     }
 }

@@ -22,17 +22,18 @@ public class SignInPage extends BasePage {
     public SignInPage(WebDriver driver, PropertyManager propertyManager) {
         super(driver, propertyManager);
     }
+
     public SignInPage enterEmail(String text) {
         enterTextIntoField(emailField, text);
         return this;
     }
 
-    public SignInPage pressContinueButton(){
+    public SignInPage pressContinueButton() {
         clickOnElement(continueButton);
         return this;
     }
 
-    public SignInPage createAccount(){
+    public SignInPage createAccount() {
         clickOnElement(createAccountButton);
         return this;
     }
@@ -42,12 +43,12 @@ public class SignInPage extends BasePage {
         return this;
     }
 
-    public SignInPage pressSingInButton(){
+    public SignInPage pressSingInButton() {
         clickOnElement(signInButton);
         return this;
     }
 
-    public String pageSource(){
+    public String pageSource() {
         return getPageSource();
     }
 }

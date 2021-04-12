@@ -7,9 +7,6 @@ import org.openqa.selenium.support.FindBy;
 
 public class CurrencySettingPage extends BasePage {
 
-    private static final String CURRENCY_PAGE_TITLE = PropertyManager.getProperty("currencyPage.title");
-    private static final String MESSAGE = PropertyManager.getProperty("currencyPage.message");
-
     @FindBy(xpath = "//select[@id='icp-sc-dropdown']")
     public static WebElement currencyDrp;
 

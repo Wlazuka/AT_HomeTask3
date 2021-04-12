@@ -9,7 +9,6 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
-import java.util.List;
 
 public class BasePage extends Page {
 
@@ -49,10 +48,6 @@ public class BasePage extends Page {
         actions.click(element).perform();
     }
 
-    protected void clickOnElement(List<WebElement> elements, int position){
-        Actions actions = new Actions(driver);
-        actions.click(elements.get(position-1)).perform();
-    }
 
     protected void selectFromDropdownByValue(WebElement element, String value){
         Select dropdown = new Select(element);
@@ -63,6 +58,4 @@ public class BasePage extends Page {
         Select dropdown = new Select(element);
         dropdown.selectByVisibleText(value);
     }
-
-
 }

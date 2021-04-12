@@ -7,7 +7,6 @@ import org.openqa.selenium.support.FindBy;
 
 public class ProductDetailsPage extends BasePage {
 
-
     @FindBy(xpath = "//a[@id='a-autoid-2-announce']")
     public static WebElement hardCoverButton;
 
@@ -31,7 +30,7 @@ public class ProductDetailsPage extends BasePage {
         return this;
     }
 
-    public ProductDetailsPage addToCart(){
+    public ProductDetailsPage addToCart() {
         clickOnElement(adToCArtButton);
         return this;
     }
