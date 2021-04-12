@@ -14,7 +14,7 @@ public class PropertyManager {
     private static PropertyManager instance = null;
     private static final Properties properties = new Properties();
 
-    private PropertyManager() {
+    public PropertyManager() {
         loadProperties(System.getProperty("testdata.property.path"));
     }
 

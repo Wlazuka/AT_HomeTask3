@@ -1,10 +1,12 @@
 package com.amazon.pageobject;
 
+import com.amazon.utils.PropertyManager;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.devtools.v89.page.Page;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import java.util.List;
@@ -12,6 +14,13 @@ import java.util.List;
 public class BasePage extends Page {
 
     protected WebDriver driver;
+    protected PropertyManager propertyManager;
+
+    public BasePage(WebDriver driver, PropertyManager propertyManager){
+        this.driver = driver;
+        PageFactory.initElements(this.driver, this);
+        this.propertyManager = propertyManager;
+    }
 
     protected void checkPageTitle(String title){
         Assert.assertEquals(driver.getTitle(), title);
@@ -24,6 +33,10 @@ public class BasePage extends Page {
 
     protected void openWebPage(String url){
         driver.navigate().to(url);
+    }
+
+    protected String getPageSource(){
+        return driver.getPageSource();
     }
 
     protected void enterTextIntoField(WebElement element, String text){

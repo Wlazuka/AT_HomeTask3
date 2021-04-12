@@ -1,28 +1,20 @@
 package com.amazon;
 
-import com.amazon.BaseTest;
-import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.Select;
+import com.amazon.utils.PropertyManager;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class ChangeCurrencyTest extends BaseTest {
 
+    private static final String CURRENCY = PropertyManager.getProperty("currencyPage.currency");
+    private static final String MESSAGE = PropertyManager.getProperty("currencyPage.messageShort");
 
     @Test
-    public void changeCurrency() {
-        driver.get(AMAZON_HOME_PAGE_URL);
-        String pageTitle = driver.getTitle();
-        Assert.assertEquals(pageTitle, AMAZON_HOME_PAGE_TITLE);
-        driver.findElement(By.xpath(CHANGE_LANGUAGE_BTN_XPATH)).click();
-        String languagePageTitle = driver.getTitle();
-        Assert.assertEquals(languagePageTitle, AMAZON_LANGUAGE_PAGE_TITLE);
+    public void changeCurrency(){
+        homePage.open().changeCurrency();
+        currencySettingPage.selectCurrency(CURRENCY);
 
-        Select drpCurrency = new Select(driver.findElement(By.xpath(CURRENCY_DROPDOWN_XPATH)));
-        drpCurrency.selectByVisibleText("€ - EUR - Euro");
-        Assert.assertTrue(driver.getPageSource().contains(NOTE));
-
-
+        System.out.println(MESSAGE);
+        Assert.assertTrue(currencySettingPage.pageSource().contains(MESSAGE));
     }
-
 }

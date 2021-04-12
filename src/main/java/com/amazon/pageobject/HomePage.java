@@ -12,29 +12,44 @@ public class HomePage extends BasePage {
     private static final String HOME_PAGE_URL = PropertyManager.getProperty("homepage.url");
     private static final String PAGE_TITLE = PropertyManager.getProperty("homepage.title");
 
-    @FindBy(xpath = "//input[@id='store_nav_search_term']")
-    public static WebElement SEARCH_FIELD;
+    @FindBy(xpath = "//input[@id='twotabsearchtextbox']")
+    public static WebElement searchField;
+
+    @FindBy(xpath = "//input[@id='nav-search-submit-button']")
+    public static WebElement searchButton;
 
     @FindBy (xpath = "//a[@id='icp-nav-flyout']")
-    public static WebElement CHANGE_LANGUAGE_BTN;
+    public static WebElement changeLanguageButton;
+
+    @FindBy (xpath = "//a[@id='nav-link-accountList']")
+    public static WebElement signInLink;
 
 
-    public HomePage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(this.driver, this);
+    public HomePage(WebDriver driver, PropertyManager propertyManager){
+        super(driver, propertyManager);
     }
 
     public HomePage open() {
         openWebPage(HOME_PAGE_URL);
         checkPageTitle(PAGE_TITLE);
-//        wait.forPageToLoad();
         return this;
     }
 
-    public HomePage searchProduct(String gameTitle) {
-        enterTextIntoField(SEARCH_FIELD, gameTitle);
-        pressKey(Keys.ENTER);
+    public HomePage searchProduct(String item) {
+        enterTextIntoField(searchField, item);
+        clickOnElement(searchButton);
         return this;
     }
+
+    public HomePage changeCurrency(){
+        clickOnElement(changeLanguageButton);
+        return this;
+    }
+
+    public HomePage signIn(){
+        clickOnElement(signInLink);
+        return this;
+    }
+
 }
 

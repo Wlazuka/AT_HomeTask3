@@ -4,21 +4,33 @@ import com.amazon.utils.PropertyManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-public class CurrencySettingPage extends BasePage{
+public class CurrencySettingPage extends BasePage {
 
     private static final String CURRENCY_PAGE_TITLE = PropertyManager.getProperty("currencyPage.title");
     private static final String MESSAGE = PropertyManager.getProperty("currencyPage.message");
 
     @FindBy(xpath = "//select[@id='icp-sc-dropdown']")
-    public static WebElement CURRENCY_DROPDOWN;
+    public static WebElement currencyDrp;
 
     @FindBy(xpath = "//span[contains(text(),'Save changes')]")
-    private static WebElement SAVE_BUTTON;
+    private static WebElement saveButton;
 
-    public CurrencySettingPage(WebDriver driver){
-        this.driver = driver;
-        PageFactory.initElements(this.driver, this);
+    public CurrencySettingPage(WebDriver driver, PropertyManager propertyManager) {
+        super(driver, propertyManager);
+    }
+
+    public CurrencySettingPage selectCurrency(String currency) {
+        selectFromDropdownByText(currencyDrp, currency);
+        return this;
+    }
+
+    public String pageSource(){
+        return getPageSource();
+    }
+
+    public CurrencySettingPage saveSettings() {
+        clickOnElement(saveButton);
+        return this;
     }
 }
