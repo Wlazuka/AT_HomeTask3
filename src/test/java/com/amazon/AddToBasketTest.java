@@ -6,12 +6,13 @@ import org.testng.annotations.Test;
 
 public class AddToBasketTest extends BaseTest {
 
-    private static final String ITEM = PropertyManager.getProperty("search.item");
+    private static final String ITEM = PropertyManager.getProperty("search.phrase");
     private static final String MESSAGE = PropertyManager.getProperty("cart.message");
 
     @Test
     public void basicAmazonProductSearch() {
         homePage.open()
+                .dontChangeCountry()
                 .searchProduct(ITEM);
         searchResultsPage.choseItem();
         productDetailsPage.choseHardCover().selectQuantity("2").addToCart();

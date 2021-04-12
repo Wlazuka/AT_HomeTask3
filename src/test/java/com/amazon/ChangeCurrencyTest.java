@@ -11,7 +11,9 @@ public class ChangeCurrencyTest extends BaseTest {
 
     @Test
     public void changeCurrency(){
-        homePage.open().changeCurrency();
+        homePage.open()
+                .dontChangeCountry()
+                .changeCurrency();
         currencySettingPage.selectCurrency(CURRENCY);
 
         System.out.println(MESSAGE);

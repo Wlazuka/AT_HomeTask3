@@ -11,7 +11,9 @@ public class SignInFailTest extends BaseTest {
 
     @Test
     public void signInFailTest() {
-        homePage.open().signIn();
+        homePage.open()
+                .dontChangeCountry()
+                .signIn();
         signInPage
                 .enterEmail(EMAIL)
                 .pressContinueButton()

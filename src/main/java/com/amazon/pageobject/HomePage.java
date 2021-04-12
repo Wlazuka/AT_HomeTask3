@@ -24,6 +24,9 @@ public class HomePage extends BasePage {
     @FindBy (xpath = "//a[@id='nav-link-accountList']")
     public static WebElement signInLink;
 
+    @FindBy (xpath = "//span[contains(text(),\"Don't Change\")]")
+    public static WebElement dontChangeButton;
+
 
     public HomePage(WebDriver driver, PropertyManager propertyManager){
         super(driver, propertyManager);
@@ -51,5 +54,9 @@ public class HomePage extends BasePage {
         return this;
     }
 
+    public HomePage dontChangeCountry(){
+        clickOnElement(dontChangeButton);
+        return this;
+    }
 }
 

@@ -1,14 +1,11 @@
 package com.amazon.pageobject;
 
-import com.amazon.actions.Elements;
 import com.amazon.utils.PropertyManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class SearchResultsPage extends BasePage{
-
-    private static final String ITEM = PropertyManager.getProperty("search.itemTitle");
 
     public SearchResultsPage(WebDriver driver, PropertyManager propertyManager){
         super(driver, propertyManager);
@@ -23,5 +20,9 @@ public class SearchResultsPage extends BasePage{
     public SearchResultsPage choseItem(){
         clickOnElement(searchedItem);
         return this;
+    }
+
+    public String pageSource(){
+        return getPageSource();
     }
 }
